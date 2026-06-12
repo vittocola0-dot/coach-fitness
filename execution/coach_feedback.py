@@ -1,4 +1,5 @@
-Coach Feedback — Coach Fitness Dinamico
+"""
+Coach Feedback - Coach Fitness Dinamico
 =========================================
 Genera feedback settimanale personalizzato basato su regole deterministiche.
 Correla la variazione di peso con gli allenamenti effettivamente svolti.
@@ -26,7 +27,7 @@ def genera_feedback(delta_peso: float | None,
         return (
             "🎯 **Benvenuto!** Hai registrato il tuo peso iniziale come baseline. "
             "Da questa settimana in poi potrò tracciare i tuoi progressi e darti "
-            "consigli personalizzati. Inizia ad allenarti con costanza — anche "
+            "consigli personalizzati. Inizia ad allenarti con costanza - anche "
             "2-3 sessioni a settimana fanno una grande differenza!"
         )
 
@@ -71,7 +72,7 @@ def genera_feedback(delta_peso: float | None,
         elif costante:
             feedback_parts.append(
                 f"📉 Hai perso {abs(delta_peso)} kg con {num_allenamenti} allenamenti ({dettaglio_str}). "
-                "La perdita è significativa — ottimo impegno! Monitora come ti senti: "
+                "La perdita è significativa - ottimo impegno! Monitora come ti senti: "
                 "se hai poca energia, concediti un giorno di stretching in più."
             )
         else:
@@ -117,7 +118,7 @@ def genera_feedback(delta_peso: float | None,
                 f"⚖️ Questa settimana il tuo peso è rimasto invariato, "
                 f"ma hai completato solo {num_allenamenti} allenamento/i ({dettaglio_str}). "
                 "Per vedere variazioni di peso, dobbiamo cercare di essere più costanti "
-                "nei prossimi giorni — punta ad almeno 3 sessioni!"
+                "nei prossimi giorni - punta ad almeno 3 sessioni!"
             )
         else:
             feedback_parts.append(
@@ -147,7 +148,7 @@ def genera_feedback(delta_peso: float | None,
             feedback_parts.append(
                 f"⚠️ Il peso è aumentato di {delta_peso:+.1f} kg e non hai completato "
                 "nessun allenamento. Prova a ricominciare con sessioni brevi (15-20 min) "
-                "anche a bassa intensità — l'importante è riprendere il ritmo!"
+                "anche a bassa intensità - l'importante è riprendere il ritmo!"
             )
 
     # --- AUMENTO RAPIDO ---
