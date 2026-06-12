@@ -1,4 +1,5 @@
-Database degli Esercizi — Coach Fitness Dinamico
+"""
+Database degli Esercizi - Coach Fitness Dinamico
 ================================================
 Contiene ~50 esercizi categorizzati per tipo, gruppo muscolare e attrezzatura.
 Ogni esercizio è un dizionario con i seguenti campi:
@@ -7,8 +8,8 @@ Ogni esercizio è un dizionario con i seguenti campi:
 - gruppo: "gambe" | "petto" | "schiena" | "core" | "fullbody" | "spalle" | "braccia"
 - attrezzatura: "nessuna" | "manubri" | "elastici" | "tappetino" | "sbarra"
 - serie_default: Numero di serie (int)
-- reps_default: Numero di ripetizioni (int) — oppure None se a tempo
-- durata_default: Durata in secondi (int) — oppure None se a ripetizioni
+- reps_default: Numero di ripetizioni (int) - oppure None se a tempo
+- durata_default: Durata in secondi (int) - oppure None se a ripetizioni
 """
 
 ESERCIZI = [
