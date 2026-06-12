@@ -1,12 +1,13 @@
-Workout Generator — Coach Fitness Dinamico
+"""
+Workout Generator - Coach Fitness Dinamico
 ============================================
 Genera 3 alternative di allenamento (A, B, C) in base a:
 - Tempo disponibile (minuti)
 - Livello di energia (Alta, Media, Bassa)
 - Profilo utente (attrezzatura disponibile)
 
-La generazione è deterministica: usa il database esercizi, filtra per attrezzatura,
-seleziona un numero adeguato di esercizi e adatta volume/intensità.
+La generazione e' deterministica: usa il database esercizi, filtra per attrezzatura,
+seleziona un numero adeguato di esercizi e adatta volume/intensita'.
 """
 
 import random
@@ -18,7 +19,7 @@ from esercizi_db import (
 )
 
 
-# Mappatura tempo → numero di esercizi per opzione
+# Mappatura tempo -> numero di esercizi per opzione
 TEMPO_ESERCIZI = {
     10: 3, 15: 4, 20: 4,
     25: 5, 30: 5, 35: 6,
@@ -28,19 +29,19 @@ TEMPO_ESERCIZI = {
 
 # Nomi descrittivi delle opzioni
 NOMI_OPZIONI = {
-    "A": "Alta Intensità (HIIT)",
+    "A": "Alta Intensita' (HIIT)",
     "B": "Forza / Postura",
-    "C": "Stretching / Mobilità",
+    "C": "Stretching / Mobilita'",
 }
 
-# Mappatura opzione → categoria esercizi
+# Mappatura opzione -> categoria esercizi
 OPZIONE_CATEGORIA = {
     "A": "hiit",
     "B": "forza",
     "C": "stretching",
 }
 
-# Moltiplicatori di intensità in base all'energia
+# Moltiplicatori di intensita' in base all'energia
 MOLTIPLICATORE_ENERGIA = {
     "Alta": {"serie": 1.2, "reps": 1.2, "durata": 1.2},
     "Media": {"serie": 1.0, "reps": 1.0, "durata": 1.0},
@@ -57,7 +58,7 @@ def _calcola_num_esercizi(tempo_minuti: int) -> int:
     Returns:
         Numero di esercizi da includere nell'allenamento.
     """
-    # Trova il valore più vicino nella mappatura
+    # Trova il valore piu' vicino nella mappatura
     tempi_ordinati = sorted(TEMPO_ESERCIZI.keys())
     for t in tempi_ordinati:
         if tempo_minuti <= t:
@@ -68,7 +69,7 @@ def _calcola_num_esercizi(tempo_minuti: int) -> int:
 def _seleziona_esercizi(esercizi_disponibili: list, num_esercizi: int) -> list:
     """Seleziona un mix bilanciato di esercizi da gruppi muscolari diversi.
 
-    Cerca di coprire quanti più gruppi muscolari possibile senza ripetere
+    Cerca di coprire quanti piu' gruppi muscolari possibile senza ripetere
     lo stesso gruppo consecutivamente.
 
     Args:
@@ -93,7 +94,7 @@ def _seleziona_esercizi(esercizi_disponibili: list, num_esercizi: int) -> list:
     for g in gruppi:
         random.shuffle(gruppi[g])
 
-    # Seleziona alternando tra gruppi per varietà muscolare
+    # Seleziona alternando tra gruppi per varieta' muscolare
     selezionati = []
     nomi_gruppi = list(gruppi.keys())
     random.shuffle(nomi_gruppi)
@@ -160,15 +161,15 @@ def formatta_esercizio(ex: dict) -> str:
         ex: Dizionario dell'esercizio con campi adattati.
 
     Returns:
-        Stringa formattata, es. "Squat — 3×12" o "Plank — 3×30s".
+        Stringa formattata, es. "Squat - 3x12" o "Plank - 3x30s".
     """
     nome = ex["nome"]
     serie = ex.get("serie", ex["serie_default"])
 
     if ex.get("reps") is not None:
-        return f"{nome} — {serie}×{ex['reps']}"
+        return f"{nome} - {serie}x{ex['reps']}"
     elif ex.get("durata") is not None:
-        return f"{nome} — {serie}×{ex['durata']}s"
+        return f"{nome} - {serie}x{ex['durata']}s"
     else:
         return nome
 
