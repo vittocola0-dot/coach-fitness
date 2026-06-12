@@ -1,4 +1,5 @@
-Data Manager — Coach Fitness Dinamico
+"""
+Data Manager - Coach Fitness Dinamico
 ======================================
 Gestisce tutte le operazioni CRUD sui file locali:
 - profilo_utente.json  → profilo antropometrico dell'utente
