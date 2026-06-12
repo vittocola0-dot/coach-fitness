@@ -1,9 +1,10 @@
-Coach Fitness Dinamico — App Streamlit
+"""
+Coach Fitness Dinamico -- App Streamlit
 ========================================
 Applicazione principale con 3 sezioni (Tab):
-1. Il Tuo Profilo — Configurazione iniziale
-2. Allenamento di Oggi — Generatore on-demand + tracciamento
-3. Diario & Progressi — Analisi settimanale e storico
+1. Il Tuo Profilo -- Configurazione iniziale
+2. Allenamento di Oggi -- Generatore on-demand + tracciamento
+3. Diario & Progressi -- Analisi settimanale e storico
 
 Lanciare con: streamlit run execution/app.py
 """
@@ -179,7 +180,7 @@ st.markdown("""
 st.markdown("""
 <div class="main-header">
     <h1>🏋️ Coach Fitness Dinamico</h1>
-    <p>Il tuo personal trainer AI — Allenamenti su misura, progressi reali</p>
+    <p>Il tuo personal trainer AI - Allenamenti su misura, progressi reali</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -387,7 +388,7 @@ with tab2:
             energia_sel_val = st.session_state.get("energia_selezionata", "Media")
 
             st.markdown("---")
-            st.markdown(f"**Allenamento per {tempo_sel} minuti — Energia: {energia_sel_val}**")
+            st.markdown(f"**Allenamento per {tempo_sel} minuti - Energia: {energia_sel_val}**")
 
             col_a, col_b, col_c = st.columns(3)
 
@@ -595,7 +596,7 @@ with tab3:
             for _, row in allenamenti_recenti.iterrows():
                 opz_emoji = {"A": "🔥", "B": "💪", "C": "🧘"}.get(row["opzione"], "📋")
                 st.markdown(
-                    f"**{row['data']}** — {opz_emoji} Opzione {row['opzione']} "
-                    f"({row['nome_opzione']}) — {row['tempo_minuti']} min — "
+                    f"**{row['data']}** - {opz_emoji} Opzione {row['opzione']} "
+                    f"({row['nome_opzione']}) - {row['tempo_minuti']} min - "
                     f"Energia: {row['energia']}"
                 )
